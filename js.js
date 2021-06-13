@@ -13,8 +13,6 @@ async function getRepos(query){
   const response = await fetch(`https://api.github.com/search/repositories?q=${query}&per_page=5`)
   if(response.ok){
     return response.json()
-  }else{
-    console.log('too fast')
   }
 }
 const autocompletes = document.createElement('div')
@@ -63,4 +61,4 @@ const debounce = (fn, throttleTime) => {
     })
   }
 };
-const getReposWrapper = debounce(getRepos,0)
+const getReposWrapper = debounce(getRepos,400)
